@@ -1,15 +1,11 @@
 import com.demo.Application;
-import com.demo.controller.HelloController;
 import com.demo.sender.HelloSender;
+import com.demo.sender.TopicSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 /**
  * @author wuwei
@@ -17,14 +13,25 @@ import org.springframework.util.MultiValueMap;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@EnableAutoConfiguration
-public class RabbitMqHelloTest {
+public class RabbitMqTest {
 
     @Autowired
     private HelloSender helloSender;
+    @Autowired
+    private TopicSender topicSender;
 
     @Test
     public void hello() {
         helloSender.send();
+    }
+
+    @Test
+    public void sendNews() {
+        topicSender.sendNews();
+    }
+
+    @Test
+    public void sendWeather() {
+        topicSender.sendWeather();
     }
 }
