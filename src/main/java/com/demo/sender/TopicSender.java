@@ -1,5 +1,6 @@
 package com.demo.sender;
 
+import com.demo.config.RabbitConst;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +16,11 @@ public class TopicSender {
 
     public void sendNews() {
         String msg = "hi, i am China news";
-        rabbitTemplate.convertAndSend("exchange", "China.news", msg);
+        rabbitTemplate.convertAndSend(RabbitConst.EXCHANGE_NAME, RabbitConst.ROUTING_KEY_NEWS, msg);
     }
 
     public void sendWeather() {
         String msg = "hi, i am China weather";
-        rabbitTemplate.convertAndSend("exchange", "China.weather", msg);
+        rabbitTemplate.convertAndSend(RabbitConst.EXCHANGE_NAME, RabbitConst.ROUTING_KEY_WEATHER, msg);
     }
 }

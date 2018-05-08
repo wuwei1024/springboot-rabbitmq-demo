@@ -1,5 +1,6 @@
 package com.demo.receiver;
 
+import com.demo.config.RabbitConst;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @date 2018/5/8 10:53
  */
 @Component
-@RabbitListener(queues = "all")
+@RabbitListener(queues = RabbitConst.QUEUE_NAME_ALL)
 public class TopicReceiver3 {
 
     @RabbitHandler
